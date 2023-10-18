@@ -14,7 +14,7 @@ function processInput() {
     let result = "Error: Command not found";
 
     const item = {};
-    const customerPurchase = (process.argv.slice(3).map((value) => value.split(`=`)));
+    const customerPurchase = (process.argv.slice(3).map((value) => value.split(`:`)));
 
     for (const details of customerPurchase) {
         item[details[0]] = details[1];
