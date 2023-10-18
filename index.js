@@ -1,10 +1,10 @@
 const {
     getItemById,
-    getAllPurchases,
-    createPurchase,
-    updatePurchase,
-    deletePurchase,
-    savePurchase
+    getAllItems,
+    createItem,
+    updateItem,
+    deleteItem,
+    saveItem
 } = require("./src/spookysupplies")
 
 function processInput() {
@@ -14,14 +14,14 @@ function processInput() {
     let result = "Error: Command not found";
 
     const item = {};
-    const customerPurchase = (process.argv.slice(3).map((value) => value.split(`:`)));
+    const supplyDetails = (process.argv.slice(3).map((value) => value.split(`:`)));
 
-    for (const details of customerPurchase) {
+    for (const details of supplyDetails) {
         item[details[0]] = details[1];
     }
 
     if (expectedCommand === "create") {
-        result = createPurchase(item)
+        result = createItem(item)
     }
 
     else if (expectedCommand === "get") {
@@ -29,19 +29,19 @@ function processInput() {
             result = getItemById(item.id);
         }
         else {
-            result = getAllPurchases();
+            result = getAllItems();
         }
     }
 
     else if (expectedCommand === "update") {
-        result = updatePurchase(item.id, item)
+        result = updateItem(item.id, item)
     }
 
     else if (expectedCommand === "delete") {
-        result = deletePurchase(item.id);
+        result = deleteItem(item.id);
     }
 
-    savePurchase();
+    saveItem();
     console.log(result);
 }
 
