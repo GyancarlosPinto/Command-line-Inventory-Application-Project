@@ -8,7 +8,9 @@
     "create": "node index.js create",
     "get": "node index.js get",
     "update": "node index.js update",
-    "delete": "node index.js delete"
+    "delete": "node index.js delete",
+    "addToCart": "node index.js addToCart",
+    "deleteCart": "node index.js deleteCart"
   },
   "keywords": [],
   "author": "Gyancarlos Pinto",

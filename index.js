@@ -7,6 +7,10 @@ const {
     saveItem
 } = require("./src/spookysupplies")
 
+const {
+    addToCart,
+} = require("./src/cart")
+
 function processInput() {
     const expectedCommand = process.argv[2];
     console.log(expectedCommand);
@@ -39,6 +43,13 @@ function processInput() {
 
     else if (expectedCommand === "delete") {
         result = deleteItem(item.id);
+    }
+
+    else if (expectedCommand === "addToCart") {
+        const itemDetails = getItemById(item.id);
+        if (itemDetails.inStock >= item.takeFromInventory) {
+            result = addToCart(itemDetails, item.takeFromInventory);
+        }
     }
 
     saveItem();
