@@ -32,7 +32,6 @@ function createItem(itemDetails) {
 
 // Update an existing purchase with the details provided
 function updateItem(id, itemDetails) {
-    console.log(id);
     const result = items.findIndex(item => item.id === id);
     if(items[result]) {
         items[result] = {

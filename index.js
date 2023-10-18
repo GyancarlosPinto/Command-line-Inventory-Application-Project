@@ -9,7 +9,8 @@ const {
 
 const {
     addToCart,
-    deleteCart
+    deleteCart,
+    updateOneItem
 } = require("./src/cart")
 
 function processInput() {
@@ -57,9 +58,9 @@ function processInput() {
         result = deleteCart();
     }
 
-    // else if (expectedCommand === "deleteOneItem") {
-        
-    // }
+    else if (expectedCommand === "updateOneItem") {
+        result = updateOneItem(item.id, item);
+    }
 
     saveItem();
     console.log(result);

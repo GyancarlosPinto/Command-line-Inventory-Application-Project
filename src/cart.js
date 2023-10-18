@@ -20,9 +20,18 @@ function deleteCart() {
     saveCart();
 }
 
-// Deletes One item from cart
-function deleteOneItem(params) {
-    
+// Update One item from cart
+function updateOneItem(params) {
+    const result = cart.findIndex(item => item.id === id);
+    if(cart[result]) {
+        cart[result] = {
+        ...cart[result],
+        ...itemDetails
+      };
+      saveItem();
+      return items[result];
+    }
+    return `Error: item with ID ${id} not found`;
 }
 
 
@@ -35,5 +44,6 @@ function saveCart() {
 
 module.exports = {
     addToCart,
-    deleteCart
+    deleteCart,
+    updateOneItem
 }
