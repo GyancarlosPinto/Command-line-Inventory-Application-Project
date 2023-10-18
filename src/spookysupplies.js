@@ -25,21 +25,24 @@ function createItem(itemDetails) {
     itemDetails.itemId = nanoid(6);
     itemDetails.rating = Number(Math.random().toFixed(2));
     items.push(itemDetails);
+    saveItem();
     return itemDetails;
 }
 
+
 // Update an existing purchase with the details provided
 function updateItem(id, itemDetails) {
+    console.log(id);
     const result = items.findIndex(item => item.id === id);
     if(items[result]) {
         items[result] = {
         ...items[result],
         ...itemDetails
       };
+      saveItem();
       return items[result];
     }
-  
-    return `Error: purchase with ID ${id} not found`;
+    return `Error: item with ID ${id} not found`;
 }
 
 // Delete an existing purchase
@@ -47,11 +50,12 @@ function deleteItem(id) {
     const result = items.findIndex(item => item.id === id);
     if(items[result]) {
       const deleted = items.splice(result, 1);
+      saveItem();
       return deleted;
     }
   
     return `Error: item with ID ${id} not found`;
-  }
+}
 
 // Saves the purchases to purchases.json file for persistence
 function saveItem() {
