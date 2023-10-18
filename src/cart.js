@@ -14,6 +14,17 @@ function addToCart(itemDetails, num) {
     return (total/100).toFixed(2);
 }
 
+// Deletes entire cart
+function deleteCart() {
+    cart.length = 0;
+    saveCart();
+}
+
+// Deletes One item from cart
+function deleteOneItem(params) {
+    
+}
+
 
 
 // Saves the purchases to purchases.json file for persistence
@@ -23,5 +34,6 @@ function saveCart() {
 }
 
 module.exports = {
-    addToCart
+    addToCart,
+    deleteCart
 }

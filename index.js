@@ -9,6 +9,7 @@ const {
 
 const {
     addToCart,
+    deleteCart
 } = require("./src/cart")
 
 function processInput() {
@@ -51,6 +52,14 @@ function processInput() {
             result = addToCart(itemDetails, item.takeFromInventory);
         }
     }
+
+    else if (expectedCommand === "deleteCart") {
+        result = deleteCart();
+    }
+
+    // else if (expectedCommand === "deleteOneItem") {
+        
+    // }
 
     saveItem();
     console.log(result);
