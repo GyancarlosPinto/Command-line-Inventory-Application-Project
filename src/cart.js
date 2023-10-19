@@ -1,10 +1,10 @@
 const fs = require("fs");
 
-const cart = require("../data/cart.json");
+const cart = JSON.parse(fs.readFileSync("./data/cart.json"))
+const { faker } = require("@faker-js/faker");
 
 // Adds items to cart
 function addToCart(itemDetails, num) {
-    let total = 0;
     itemDetails.takeFromInventory = num
     cart.push(itemDetails);
     saveCart();
@@ -13,10 +13,11 @@ function addToCart(itemDetails, num) {
 
 // Gets price of item or all items from cart
 function getPriceFromCart() {
+    let total = 0;
     for (const item of cart) {
         total += item.priceInCents * item.takeFromInventory;
     }
-    return (total/100).toFixed(2);
+    return `$${(total/100).toFixed(2)}`;
 }
 
 // Deletes entire cart
@@ -26,7 +27,7 @@ function deleteCart() {
 }
 
 // Update One item from cart
-function updateOneItem(params) {
+function updateOneItem(itemDetails, id) {
     const result = cart.findIndex(item => item.id === id);
     if(cart[result]) {
         cart[result] = {
@@ -39,10 +40,23 @@ function updateOneItem(params) {
     return `Error: item with ID ${id} not found`;
 }
 
-// // Prints the receipt of a cart
-// function printReceipt(params) {
-//     item.receiptID = faker.random.alphaNumeric(12);
-// }
+// Prints the receipt of a cart
+function printReceipt() {
+    const purchaseId = faker.random.alphaNumeric(12);
+    let total = 0;
+    let lines = [
+        `Thank you for shopping at Spooky Supplies!`,
+        `-------------------------------------------`,
+    ];
+    for (const item of cart) {
+        lines.push(`${item.itemName}: $${(item.priceInCents * item.takeFromInventory / 100).toFixed(2)}`);
+    }
+    let purchasePrice = getPriceFromCart();
+    lines.push(`-------------------------------------------`);
+    lines.push(`TOTAL: ${purchasePrice}`);
+    lines.push(`RECEIPT ID: ${purchaseId}`);
+    return lines.join(`\n`);
+}
 
 
 // Saves the purchases to purchases.json file for persistence
@@ -56,5 +70,5 @@ module.exports = {
     getPriceFromCart,
     deleteCart,
     updateOneItem,
-    // printReceipt
+    printReceipt
 }
