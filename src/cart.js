@@ -2,6 +2,7 @@ const fs = require("fs");
 
 const cart = JSON.parse(fs.readFileSync("./data/cart.json"))
 const { faker } = require("@faker-js/faker");
+const chalk = require("chalk");
 
 // Adds items to cart
 function addToCart(itemDetails, num) {
@@ -46,16 +47,19 @@ function printReceipt() {
     let total = 0;
     let lines = [
         `Thank you for shopping at Spooky Supplies!`,
-        `-------------------------------------------`,
+        `------------------------------------------------------------------------------------`,
     ];
     for (const item of cart) {
         lines.push(`${item.itemName}: $${(item.priceInCents * item.takeFromInventory / 100).toFixed(2)}`);
     }
     let purchasePrice = getPriceFromCart();
-    lines.push(`-------------------------------------------`);
+    lines.push(`------------------------------------------------------------------------------------`);
     lines.push(`TOTAL: ${purchasePrice}`);
     lines.push(`RECEIPT ID: ${purchaseId}`);
-    return lines.join(`\n`);
+    lines.push(`------------------------------------------------------------------------------------`);
+    lines.push(`Hope you have a Spooky Halloween!!!`);
+
+    return chalk.green.italic(lines.join(`\n`));
 }
 
 

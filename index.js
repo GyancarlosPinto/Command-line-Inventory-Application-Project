@@ -12,7 +12,7 @@ const {
     getPriceFromCart,
     deleteCart,
     updateOneItem,
-    // printReceipt
+    printReceipt
 } = require("./src/cart")
 
 function processInput() {
@@ -68,9 +68,9 @@ function processInput() {
         result = updateOneItem(item.id, item);
     }
 
-    // else if (expectedCommand === "printReceipt") {
-    //     const itemDetails = itemDetails.receiptID
-    // }
+    else if (expectedCommand === "printReceipt") {
+        result = printReceipt()
+    }
 
     saveItem();
     console.log(result);
