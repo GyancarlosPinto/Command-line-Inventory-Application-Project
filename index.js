@@ -9,8 +9,10 @@ const {
 
 const {
     addToCart,
+    getPriceFromCart,
     deleteCart,
-    updateOneItem
+    updateOneItem,
+    // printReceipt
 } = require("./src/cart")
 
 function processInput() {
@@ -54,6 +56,10 @@ function processInput() {
         }
     }
 
+    else if (expectedCommand === "getPriceFromCart") {
+        result = getPriceFromCart();
+    }
+
     else if (expectedCommand === "deleteCart") {
         result = deleteCart();
     }
@@ -61,6 +67,10 @@ function processInput() {
     else if (expectedCommand === "updateOneItem") {
         result = updateOneItem(item.id, item);
     }
+
+    // else if (expectedCommand === "printReceipt") {
+    //     const itemDetails = itemDetails.receiptID
+    // }
 
     saveItem();
     console.log(result);

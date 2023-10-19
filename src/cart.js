@@ -8,6 +8,11 @@ function addToCart(itemDetails, num) {
     itemDetails.takeFromInventory = num
     cart.push(itemDetails);
     saveCart();
+    return itemDetails;
+}
+
+// Gets price of item or all items from cart
+function getPriceFromCart() {
     for (const item of cart) {
         total += item.priceInCents * item.takeFromInventory;
     }
@@ -34,6 +39,10 @@ function updateOneItem(params) {
     return `Error: item with ID ${id} not found`;
 }
 
+// // Prints the receipt of a cart
+// function printReceipt(params) {
+//     item.receiptID = faker.random.alphaNumeric(12);
+// }
 
 
 // Saves the purchases to purchases.json file for persistence
@@ -44,6 +53,8 @@ function saveCart() {
 
 module.exports = {
     addToCart,
+    getPriceFromCart,
     deleteCart,
-    updateOneItem
+    updateOneItem,
+    // printReceipt
 }

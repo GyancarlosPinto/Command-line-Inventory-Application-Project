@@ -13,12 +13,12 @@ function getItemById(id) {
     return `Error: No item with such ID exists!`;
 }
 
-// Get all purchases
+// Get all items
 function getAllItems() {
     return items;
 }
 
-// Create a purchase with details
+// Create an item with details
 function createItem(itemDetails) {
     itemDetails.priceInCents = faker.datatype.float({ min: 100, max: 1000000, precision: 1 })
     itemDetails.inStock = faker.datatype.float({ min: 0, max: 250, precision: 1 })
@@ -30,7 +30,7 @@ function createItem(itemDetails) {
 }
 
 
-// Update an existing purchase with the details provided
+// Update an existing item with the details provided
 function updateItem(id, itemDetails) {
     const result = items.findIndex(item => item.id === id);
     if(items[result]) {
@@ -44,7 +44,7 @@ function updateItem(id, itemDetails) {
     return `Error: item with ID ${id} not found`;
 }
 
-// Delete an existing purchase
+// Delete an existing item
 function deleteItem(id) {
     const result = items.findIndex(item => item.id === id);
     if(items[result]) {
@@ -56,10 +56,10 @@ function deleteItem(id) {
     return `Error: item with ID ${id} not found`;
 }
 
-// Saves the purchases to purchases.json file for persistence
+// Saves the items to spookysupplies.json file for persistence
 function saveItem() {
-    const stringifiedPurchases = JSON.stringify(items);
-    fs.writeFileSync("./data/spookysupplies.json", stringifiedPurchases); 
+    const stringifiedItems = JSON.stringify(items);
+    fs.writeFileSync("./data/spookysupplies.json", stringifiedItems); 
 }
 
 module.exports = {

@@ -7,12 +7,12 @@ describe("Items API", () => {
         it("correctly gets all items in persistent data", () => {
           expect(itemsAPI.getAllItems()).toEqual(suppliesData)
         })
-      })
+    })
     
       describe("gets item()", () => {
         it("correctly gets a single item from persistent data", () => {
           const expected = {
-            "itemName": "Vampire the Masquerade All Hollows Eve Collector's Silver Dining Set",
+            "itemName": "Vampire the Masquerade All Hollows Eve Collector's Silverware Dining Set",
             "priceInCents": 607500,
             "inStock": 2,
             "id": 'Je8jE2',
@@ -28,5 +28,5 @@ describe("Items API", () => {
     
           expect(actual).toEqual(expected);
         })
-      })
+    })
 })
