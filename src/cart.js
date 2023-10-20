@@ -44,8 +44,7 @@ function updateOneItem(itemDetails, id) {
 // Prints the receipt of a cart
 function printReceipt() {
     const purchaseId = faker.random.alphaNumeric(12);
-    let total = 0;
-    let lines = [
+    let lines = [ 
         `Thank you for shopping at Spooky Supplies!`,
         `------------------------------------------------------------------------------------`,
     ];
@@ -63,7 +62,7 @@ function printReceipt() {
 }
 
 
-// Saves the purchases to purchases.json file for persistence
+// Saves the item or items and their details to cart.json file for persistence
 function saveCart() {
     const stringifiedCart = JSON.stringify(cart);
     fs.writeFileSync("./data/cart.json", stringifiedCart);

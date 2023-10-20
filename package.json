@@ -10,8 +10,9 @@
     "update": "node index.js update",
     "delete": "node index.js delete",
     "addToCart": "node index.js addToCart",
+    "getPriceFromCart": "node index.js getPriceFromCart",
     "deleteCart": "node index.js deleteCart",
-    "deleteOneItem": "node index.js updateOneItem",
+    "updateOneItem": "node index.js updateOneItem",
     "printReceipt": "node index.js printReceipt"
   },
   "keywords": [],
