@@ -18,7 +18,7 @@ const {
 function processInput() {
     const expectedCommand = process.argv[2];
     console.log(expectedCommand);
-    
+
     let result = "Error: Command not found";
 
     const item = {};

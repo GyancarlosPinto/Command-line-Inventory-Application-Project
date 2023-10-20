@@ -33,13 +33,13 @@ function createItem(itemDetails) {
 // Update an existing item with the details provided
 function updateItem(id, itemDetails) {
     const result = items.findIndex(item => item.id === id);
-    if(items[result]) {
+    if (items[result]) {
         items[result] = {
-        ...items[result],
-        ...itemDetails
-      };
-      saveItem();
-      return items[result];
+            ...items[result],
+            ...itemDetails
+        };
+        saveItem();
+        return items[result];
     }
     return `Error: item with ID ${id} not found`;
 }
@@ -47,19 +47,19 @@ function updateItem(id, itemDetails) {
 // Delete an existing item
 function deleteItem(id) {
     const result = items.findIndex(item => item.id === id);
-    if(items[result]) {
-      const deleted = items.splice(result, 1);
-      saveItem();
-      return deleted;
+    if (items[result]) {
+        const deleted = items.splice(result, 1);
+        saveItem();
+        return deleted;
     }
-  
+
     return `Error: item with ID ${id} not found`;
 }
 
 // Saves the items to spookysupplies.json file for persistence
 function saveItem() {
     const stringifiedItems = JSON.stringify(items);
-    fs.writeFileSync("./data/spookysupplies.json", stringifiedItems); 
+    fs.writeFileSync("./data/spookysupplies.json", stringifiedItems);
 }
 
 module.exports = {

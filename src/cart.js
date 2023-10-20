@@ -18,7 +18,7 @@ function getPriceFromCart() {
     for (const item of cart) {
         total += item.priceInCents * item.takeFromInventory;
     }
-    return `$${(total/100).toFixed(2)}`;
+    return `$${(total / 100).toFixed(2)}`;
 }
 
 // Deletes entire cart
@@ -30,13 +30,13 @@ function deleteCart() {
 // Update One item from cart
 function updateOneItem(itemDetails, id) {
     const result = cart.findIndex(item => item.id === id);
-    if(cart[result]) {
+    if (cart[result]) {
         cart[result] = {
-        ...cart[result],
-        ...itemDetails
-      };
-      saveItem();
-      return items[result];
+            ...cart[result],
+            ...itemDetails
+        };
+        saveItem();
+        return items[result];
     }
     return `Error: item with ID ${id} not found`;
 }
@@ -66,7 +66,7 @@ function printReceipt() {
 // Saves the purchases to purchases.json file for persistence
 function saveCart() {
     const stringifiedCart = JSON.stringify(cart);
-    fs.writeFileSync("./data/cart.json", stringifiedCart); 
+    fs.writeFileSync("./data/cart.json", stringifiedCart);
 }
 
 module.exports = {
