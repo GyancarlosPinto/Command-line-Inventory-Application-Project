@@ -145,5 +145,12 @@
         "inStock": 174,
         "id": "Afb726",
         "rating": 0.81
+    },
+    {
+        "itemName": "Halloween Monster Mash Gummies",
+        "priceInCents": 972,
+        "inStock": 138,
+        "itemId": "LC-8tZ",
+        "rating": 3.23
     }
 ]
