@@ -135,9 +135,9 @@
     {
         "itemName": "Vampire the Masquerade All Hollows Eve Collector's Silverware Dining Set",
         "priceInCents": 607500,
-        "inStock": 2,
+        "inStock": "4",
         "id": "Je8jE2",
-        "rating": 4.34
+        "rating": "4.64"
     },
     {
         "itemName": "Bag of Brains",
@@ -145,12 +145,5 @@
         "inStock": 174,
         "id": "Afb726",
         "rating": 0.81
-    },
-    {
-        "itemName": "Halloween Monster Mash Gummies",
-        "priceInCents": 972,
-        "inStock": 138,
-        "itemId": "LC-8tZ",
-        "rating": 3.23
     }
 ]
